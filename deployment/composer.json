@@ -1,0 +1,12 @@
+{
+    "name": "khaydarovm/deployment",
+    "authors": [
+        {
+            "name": "Murod Khaydarov",
+            "email": "murod.haydarov@gmail.com"
+        }
+    ],
+    "require": {
+        "deployer/deployer": "^6.7"
+    }
+}

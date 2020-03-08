@@ -1,0 +1,17 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "name": "rightway/day2",
+    "authors": [
+        {
+            "name": "Murod Khaydarov",
+            "email": "murod.haydarov@gmail.com"
+        }
+    ],
+    "require": {
+      "ext-simplexml": "*"
+    }
+}

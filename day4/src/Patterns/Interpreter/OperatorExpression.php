@@ -1,0 +1,51 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Patterns\Interpreter;
+
+/**
+ * Class OperatorExpression
+ * @package App\Patterns\Interpreter
+ */
+abstract class OperatorExpression extends Expression
+{
+    /**
+     * @var mixed
+     */
+    protected $l_op;
+
+    /**
+     * @var mixed
+     */
+    protected $r_op;
+
+    public function __construct(Expression $l_op, Expression $r_op)
+    {
+        $this->l_op = $l_op;
+        $this->r_op = $r_op;
+    }
+
+    public function interpret(InterpreterContext $context)
+    {
+        $this->l_op->interpret($context);
+        $this->r_op->interpret($context);
+
+        $result_l = $context->lookUp($this->l_op);
+        $result_r = $context->lookUp($this->r_op);
+
+        $this->doInterpret($context, $result_l, $result_r);
+    }
+
+    /**
+     * @param InterpreterContext $context
+     * @param $result_l
+     * @param $result_r
+     *
+     * @return mixed
+     */
+    abstract protected function doInterpret(
+        InterpreterContext $context,
+        $result_l,
+        $result_r
+    );
+}

@@ -1,0 +1,2 @@
+dbname=postgres
+dbhost=clickhouse

@@ -1,0 +1,17 @@
+{
+    "name": "khaydarovm/day6",
+    "authors": [
+        {
+            "name": "Murod Khaydarov",
+            "email": "murod.haydarov@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": [
+                "src"
+            ]
+        }
+    },
+    "require": {}
+}

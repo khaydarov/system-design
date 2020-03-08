@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- xml -->
+
+<project name="quiz" default="main">
+<!--    <property name="dbname" value="quiz" />-->
+<!--    <property name="dbhost" value="clickhouse" />-->
+<!--    <property name="dbpass" value=""></property>-->
+
+    <fileset dir="src/traits" id="stripcomments">
+        <exclude name="**/*.php"/>
+        <patternset refid="exc_test" />
+    </fileset>
+
+    <patternset id="exc_test">
+        <exclude name="**/*_test.php" />
+    </patternset>
+
+    <copy todir="build/traits">
+        <fileset refid="stripcomments" />
+        <filterchain>
+            <stripphpcomments />
+            <tabtospaces />
+        </filterchain>
+    </copy>
+
+    <target name="main" depends="log">
+        <input message="Password" propertyName="dbpass" defaultValue="default" promptChar=" >"/>
+        <echo>database: ${dbname}</echo>
+        <echo>password: ${dbpass}</echo>
+    </target>
+
+    <target name="setenvpass" if="env.DBPASS" unless="dbpass">
+        <property name="dbpass" override="yes" value="${env.DBPASS}" />
+    </target>
+
+    <target name="setpass" unless="dbpass" depends="setenvpass">
+        <property name="dbpass" override="yes" value="default"/>
+    </target>
+
+    <target name="log" depends="setpass">
+        <echo>Done!</echo>
+    </target>
+</project>
