@@ -13,5 +13,8 @@
             ]
         }
     },
-    "require": {}
+    "require": {
+        "psy/psysh": "@stable",
+        "phpunit/phpunit": "^8.5"
+    }
 }

@@ -16,18 +16,18 @@ class Entry
     private $type;
 
     /**
-     * @var int
+     * @var float
      */
     private $money;
 
     /**
      * Entry constructor.
-     * @param int $money
+     * @param float $money
      * @param \DateTime $date
      * @param EntryType $type
      */
     public function __construct(
-        int $money,
+        float $money,
         \DateTime $date,
         EntryType $type
     ) {
@@ -37,9 +37,9 @@ class Entry
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getMoney(): int
+    public function getMoney(): float
     {
         return $this->money;
     }

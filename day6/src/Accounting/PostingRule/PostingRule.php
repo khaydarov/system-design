@@ -33,9 +33,9 @@ abstract class PostingRule
 
     /**
      * @param AccountingEvent $event
-     * @param int $money
+     * @param float $money
      */
-    private function makeEntry(AccountingEvent $event, int $money): void
+    private function makeEntry(AccountingEvent $event, float $money): void
     {
         $entry = new Entry($money, $event->getWhenNoticed(), $this->entryType);
         $event->getCustomer()->addEntry($entry);
@@ -46,5 +46,5 @@ abstract class PostingRule
      * @param AccountingEvent $event
      * @return mixed
      */
-    abstract protected function calculateAmount(AccountingEvent $event): int;
+    abstract protected function calculateAmount(AccountingEvent $event): float;
 }

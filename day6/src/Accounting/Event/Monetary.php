@@ -5,25 +5,10 @@ namespace App\Accounting\Event;
 
 use App\Accounting\Customer\Customer;
 
-/**
- * Class Usage
- * @package App\Accounting\Event
- */
-class Usage extends AccountingEvent
+class Monetary extends AccountingEvent
 {
-    /**
-     * @var int
-     */
     private int $amount;
 
-    /**
-     * Usage constructor.
-     * @param int $amount
-     * @param EventType $type
-     * @param \DateTime $whenOccured
-     * @param \DateTime $whenNoticed
-     * @param Customer $customer
-     */
     public function __construct(
         int $amount,
         EventType $type,
@@ -41,13 +26,5 @@ class Usage extends AccountingEvent
     public function getAmount(): int
     {
         return $this->amount;
-    }
-
-    /**
-     * @return int
-     */
-    public function getRate(): int
-    {
-        return $this->getCustomer()->getServiceAgreement()->getRate();
     }
 }

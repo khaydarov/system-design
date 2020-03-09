@@ -29,7 +29,7 @@ class ServiceAgreement
         PostingRule $rule,
         \DateTime $date
     ): void {
-        if ($this->postingRules[$eventType->export()] === null) {
+        if (!isset($this->postingRules[$eventType->export()])) {
             $this->postingRules[$eventType->export()] = new TemporalCollection();
         }
 
@@ -38,7 +38,7 @@ class ServiceAgreement
 
     public function getPostingRule(EventType $eventType, \DateTime $date): PostingRule
     {
-        return $this->postingRules['$eventType'];
+        return $this->temporalCollection($eventType)->get($date);
     }
 
     /**

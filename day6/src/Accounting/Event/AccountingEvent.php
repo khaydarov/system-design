@@ -55,14 +55,6 @@ class AccountingEvent
     }
 
     /**
-     * @return int
-     */
-    public function getAccount(): int
-    {
-        return 1;
-    }
-
-    /**
      * @return EventType
      */
     public function getType(): EventType

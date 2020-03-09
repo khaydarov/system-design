@@ -8,19 +8,24 @@ use App\Accounting\Event\AccountingEvent;
 use App\Accounting\Event\Monetary;
 use App\Accounting\Event\Usage;
 
-/**
- * Class MultiplyByRatePR
- * @package App\Accounting
- */
-class MultiplyByRatePR extends PostingRule
+class AmountFormulaPR extends PostingRule
 {
     /**
-     * MultiplyByRatePR constructor.
-     * @param EntryType $entryType
+     * @var float
      */
-    public function __construct(EntryType $entryType)
+    private $multiplier;
+
+    /**
+     * @var int
+     */
+    private int $fixedFee;
+
+    public function __construct(float $multiplier, int $fixedFee, EntryType $entryType)
     {
         parent::__construct($entryType);
+
+        $this->multiplier = $multiplier;
+        $this->fixedFee = $fixedFee;
     }
 
     /**
@@ -30,8 +35,8 @@ class MultiplyByRatePR extends PostingRule
     protected function calculateAmount(AccountingEvent $event): float
     {
         $amount = 1;
-        if ($event instanceof Usage) {
-            $amount = $event->getAmount() * $event->getRate();
+        if ($event instanceof Monetary) {
+            $amount = $event->getAmount() * $this->multiplier + $this->fixedFee;
         }
 
         return $amount;

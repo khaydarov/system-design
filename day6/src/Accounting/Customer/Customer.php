@@ -53,6 +53,15 @@ class Customer
     }
 
     /**
+     * @param int $index
+     * @return Entry|null
+     */
+    public function getEntry(int $index): ?Entry
+    {
+        return $this->entries[$index] ?? null;
+    }
+
+    /**
      * @return ServiceAgreement
      */
     public function getServiceAgreement(): ServiceAgreement
