@@ -11,27 +11,27 @@ class Entry
     private $date;
 
     /**
-     * @var EntryType
+     * @var string
      */
     private $type;
 
     /**
      * @var float
      */
-    private $money;
+    private $amount;
 
     /**
      * Entry constructor.
-     * @param float $money
+     * @param float $amount
      * @param \DateTime $date
      * @param EntryType $type
      */
     public function __construct(
-        float $money,
+        float $amount,
         \DateTime $date,
-        EntryType $type
+        string $type
     ) {
-        $this->money = $money;
+        $this->amount = $amount;
         $this->date = $date;
         $this->type = $type;
     }
@@ -39,9 +39,9 @@ class Entry
     /**
      * @return float
      */
-    public function getMoney(): float
+    public function getAmount(): float
     {
-        return $this->money;
+        return $this->amount;
     }
 
     /**
@@ -53,9 +53,9 @@ class Entry
     }
 
     /**
-     * @return EntryType
+     * @return string
      */
-    public function getType(): EntryType
+    public function getType(): string
     {
         return $this->type;
     }

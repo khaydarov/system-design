@@ -10,7 +10,7 @@ use App\Accounting\PostingRule\PostingRule;
 class AccountingEvent
 {
     /**
-     * @var EventType
+     * @var string
      */
     private $type;
 
@@ -34,8 +34,13 @@ class AccountingEvent
      */
     private $resultingEntries = [];
 
+    /**
+     * @var array
+     */
+    private $secondaryEvents = [];
+
     public function __construct(
-        EventType $type,
+        string $type,
         \DateTime $whenOccured,
         \DateTime $whenNoticed,
         Customer $customer
@@ -55,9 +60,9 @@ class AccountingEvent
     }
 
     /**
-     * @return EventType
+     * @return string
      */
-    public function getType(): EventType
+    public function getType(): string
     {
         return $this->type;
     }
@@ -87,6 +92,28 @@ class AccountingEvent
     }
 
     /**
+     * @return array
+     */
+    public function getResultingEntries(): array
+    {
+        return $this->resultingEntries;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllResultingEntries(): array
+    {
+        $result = $this->resultingEntries;
+        foreach ($this->secondaryEvents as $event) {
+            /** @var AccountingEvent $event */
+            $result[] = $event->getAllResultingEntries();
+        }
+
+        return $result;
+    }
+
+    /**
      * @return PostingRule
      */
     public function findRule(): PostingRule
@@ -103,5 +130,13 @@ class AccountingEvent
     public function process(): void
     {
         $this->findRule()->process($this);
+    }
+
+    /**
+     * @param AccountingEvent $event
+     */
+    public function friendAddSecondaryEvent(AccountingEvent $event)
+    {
+        $this->secondaryEvents[] = $event;
     }
 }

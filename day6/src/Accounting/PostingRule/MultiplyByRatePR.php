@@ -5,7 +5,6 @@ namespace App\Accounting\PostingRule;
 
 use App\Accounting\Entry\EntryType;
 use App\Accounting\Event\AccountingEvent;
-use App\Accounting\Event\Monetary;
 use App\Accounting\Event\Usage;
 
 /**
@@ -16,9 +15,9 @@ class MultiplyByRatePR extends PostingRule
 {
     /**
      * MultiplyByRatePR constructor.
-     * @param EntryType $entryType
+     * @param string $entryType
      */
-    public function __construct(EntryType $entryType)
+    public function __construct(string $entryType)
     {
         parent::__construct($entryType);
     }

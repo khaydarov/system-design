@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Accounting\Event;
 
 use App\Accounting\Customer\Customer;
+use App\Accounting\Entry\EntryType;
 
 /**
  * Class Usage
@@ -12,33 +13,32 @@ use App\Accounting\Customer\Customer;
 class Usage extends AccountingEvent
 {
     /**
-     * @var int
+     * @var float
      */
-    private int $amount;
+    private $amount;
 
     /**
      * Usage constructor.
-     * @param int $amount
-     * @param EventType $type
+     * @param float $amount
+     * @param string $type
      * @param \DateTime $whenOccured
      * @param \DateTime $whenNoticed
      * @param Customer $customer
      */
     public function __construct(
-        int $amount,
-        EventType $type,
+        float $amount,
         \DateTime $whenOccured,
         \DateTime $whenNoticed,
         Customer $customer
     ) {
-        parent::__construct($type, $whenOccured, $whenNoticed, $customer);
+        parent::__construct(EntryType::USAGE, $whenOccured, $whenNoticed, $customer);
         $this->amount = $amount;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getAmount(): int
+    public function getAmount(): float
     {
         return $this->amount;
     }

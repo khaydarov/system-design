@@ -9,33 +9,11 @@ namespace App\Accounting\Entry;
  */
 class EntryType
 {
-    /**
-     * @var string
-     */
-    private $name;
+    public const USAGE = 'usage';
+    public const SERVICE_FEE = 'service fee';
+    public const TAX = 'tax';
 
-    /**
-     * @return EntryType
-     */
-    public static function getUsageType()
-    {
-        return new self('Base Usage');
-    }
-
-    /**
-     * @return EntryType
-     */
-    public static function getServiceFeeType()
-    {
-        return new self('Service Fee');
-    }
-
-    /**
-     * EntryType constructor.
-     * @param string $name
-     */
-    public function __construct(string $name)
-    {
-        $this->name = $name;
-    }
+    // monetary
+    public const PAYMENT = 'payment';
+    public const TRANSFER = 'transfer';
 }

@@ -37,6 +37,14 @@ class Customer
     }
 
     /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
      * @param Entry $entry
      */
     public function addEntry(Entry $entry)

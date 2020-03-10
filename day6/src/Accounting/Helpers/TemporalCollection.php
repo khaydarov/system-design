@@ -19,7 +19,7 @@ class TemporalCollection
      */
     public function put(\DateTime $date, PostingRule $rule): void
     {
-        $this->collection[$date->format('dd-mm-YYYY')] = $rule;
+        $this->collection[$date->format('d-m-Y')] = $rule;
     }
 
     /**
@@ -28,6 +28,6 @@ class TemporalCollection
      */
     public function get(\DateTime $date): PostingRule
     {
-        return $this->collection[$date->format('dd-mm-YYYY')];
+        return $this->collection[$date->format('d-m-Y')];
     }
 }

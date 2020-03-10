@@ -6,19 +6,20 @@ namespace App\Accounting\PostingRule;
 use App\Accounting\Entry\Entry;
 use App\Accounting\Entry\EntryType;
 use App\Accounting\Event\AccountingEvent;
+use App\Accounting\Event\Tax;
 
 abstract class PostingRule
 {
     /**
-     * @var EntryType
+     * @var string
      */
     protected $entryType;
 
     /**
      * PostingRule constructor.
-     * @param EntryType $entryType
+     * @param string $entryType
      */
-    protected function __construct(EntryType $entryType)
+    protected function __construct(string $entryType)
     {
         $this->entryType = $entryType;
     }
@@ -29,6 +30,10 @@ abstract class PostingRule
     public function process(AccountingEvent $event): void
     {
         $this->makeEntry($event, $this->calculateAmount($event));
+
+        if (!$this->isTaxable()) {
+            (new Tax($event, $this->calculateAmount($event)))->process();
+        }
     }
 
     /**
@@ -40,6 +45,14 @@ abstract class PostingRule
         $entry = new Entry($money, $event->getWhenNoticed(), $this->entryType);
         $event->getCustomer()->addEntry($entry);
         $event->addResultingEntry($entry);
+    }
+
+    /**
+     * @return bool
+     */
+    private function isTaxable()
+    {
+        return $this->entryType === EntryType::TAX;
     }
 
     /**

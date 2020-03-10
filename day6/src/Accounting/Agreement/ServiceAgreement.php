@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Accounting\Agreement;
 
-use App\Accounting\Event\EventType;
 use App\Accounting\Helpers\TemporalCollection;
 use App\Accounting\PostingRule\PostingRule;
 
@@ -20,34 +19,34 @@ class ServiceAgreement
     private $postingRules = [];
 
     /**
-     * @param EventType $eventType
+     * @param string $eventType
      * @param PostingRule $rule
      * @param \DateTime $date
      */
     public function addPostingRule(
-        EventType $eventType,
+        string $eventType,
         PostingRule $rule,
         \DateTime $date
     ): void {
-        if (!isset($this->postingRules[$eventType->export()])) {
-            $this->postingRules[$eventType->export()] = new TemporalCollection();
+        if (!isset($this->postingRules[$eventType])) {
+            $this->postingRules[$eventType] = new TemporalCollection();
         }
 
         $this->temporalCollection($eventType)->put($date, $rule);
     }
 
-    public function getPostingRule(EventType $eventType, \DateTime $date): PostingRule
+    public function getPostingRule(string $eventType, \DateTime $date): PostingRule
     {
         return $this->temporalCollection($eventType)->get($date);
     }
 
     /**
-     * @param EventType $eventType
+     * @param string $eventType
      * @return TemporalCollection
      */
-    private function temporalCollection(EventType $eventType): TemporalCollection
+    private function temporalCollection(string $eventType): TemporalCollection
     {
-        return $this->postingRules[$eventType->export()];
+        return $this->postingRules[$eventType];
     }
 
     /**

@@ -20,7 +20,7 @@ class AmountFormulaPR extends PostingRule
      */
     private int $fixedFee;
 
-    public function __construct(float $multiplier, int $fixedFee, EntryType $entryType)
+    public function __construct(float $multiplier, int $fixedFee, string $entryType)
     {
         parent::__construct($entryType);
 

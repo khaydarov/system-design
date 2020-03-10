@@ -9,41 +9,7 @@ namespace App\Accounting\Event;
  */
 class EventType
 {
-    /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @return EventType
-     */
-    public static function getUsageType(): EventType
-    {
-        return new self('usage');
-    }
-
-    /**
-     * @return EventType
-     */
-    public static function getServiceCallType(): EventType
-    {
-        return new self('service call');
-    }
-
-    /**
-     * EventType constructor.
-     * @param string $name
-     */
-    private function __construct(string $name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function export(): string
-    {
-        return $this->name;
-    }
+    const USAGE = 'usage';
+    const SERVICE_CALL = 'service_call';
+    const TAX = 'tax';
 }

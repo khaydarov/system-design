@@ -7,11 +7,11 @@ use App\Accounting\Customer\Customer;
 
 class Monetary extends AccountingEvent
 {
-    private int $amount;
+    private float $amount;
 
     public function __construct(
-        int $amount,
-        EventType $type,
+        float $amount,
+        string $type,
         \DateTime $whenOccured,
         \DateTime $whenNoticed,
         Customer $customer
@@ -23,7 +23,7 @@ class Monetary extends AccountingEvent
     /**
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): float
     {
         return $this->amount;
     }
