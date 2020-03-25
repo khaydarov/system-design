@@ -199,8 +199,8 @@ class AccountingTest extends TestCase
 
         // Two-ledged transactions
 
-//        $revenue->withdraw(500, $receivables, new \DateTime());
-//        $revenue->withdraw(200, $deferred, new \DateTime());
+        $revenue->withdraw(500, $receivables, new \DateTime());
+        $revenue->withdraw(200, $deferred, new \DateTime());
 //
 //        $this->assertEquals(500, $receivables->balance());
 //        $this->assertEquals(200, $deferred->balance());

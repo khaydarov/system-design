@@ -1,10 +1,10 @@
 {
+    "name": "php-labs/lab3",
     "autoload": {
         "psr-4": {
             "App\\": "src"
         }
     },
-    "name": "rightway/day2",
     "authors": [
         {
             "name": "Murod Khaydarov",
@@ -12,6 +12,6 @@
         }
     ],
     "require": {
-      "ext-simplexml": "*"
+        "phpunit/phpunit": "^8.2"
     }
 }

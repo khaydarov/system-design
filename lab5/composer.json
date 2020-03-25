@@ -1,19 +1,17 @@
 {
-    "name": "rightway/day4",
+    "name": "php-labs/lab5",
     "authors": [
         {
             "name": "Murod Khaydarov",
             "email": "murod.haydarov@gmail.com"
         }
     ],
+    "require": {},
     "autoload": {
         "psr-4": {
-            "App\\": ["src", "test"]
+            "App\\": [
+                "src"
+            ]
         }
-    },
-    "require": {
-        "psy/psysh": "@stable",
-        "phing/phing": "^2.16",
-        "phpunit/phpunit": "^8.5"
     }
 }

@@ -1,1 +1,0 @@
-Design Patterns from Martin Fowlers book
