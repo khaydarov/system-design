@@ -1,0 +1,14 @@
+{
+    "name": "khaydarovm/lab7",
+    "authors": [
+        {
+            "name": "Murod Khaydarov",
+            "email": "murod.haydarov@gmail.com"
+        }
+    ],
+    "require": {
+        "react/event-loop": "^1.1",
+        "react/http": "^0.8.6",
+        "react/stream": "^1.1.0"
+    }
+}

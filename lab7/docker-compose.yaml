@@ -1,0 +1,37 @@
+version: "3.5"
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - 8089:80
+    volumes:
+      - ./src:/src
+      - ./docker/nginx/loc.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php-1
+      - php-2
+  php-1:
+    image: php:7.4-fpm
+    volumes:
+      - ./src:/src
+      - ./vendor:/vendor
+
+  php-2:
+    image: php:7.4-fpm
+    volumes:
+      - ./src:/src
+      - ./vendor:/vendor
+
+  netdata:
+    image: netdata/netdata
+    hostname: example.com # set to fqdn of host
+    ports:
+      - 19999:19999
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
