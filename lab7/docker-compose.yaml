@@ -22,6 +22,10 @@ services:
       - ./src:/src
       - ./vendor:/vendor
 
+  swoft:
+    image: swoft/swoft
+    command: php -S 127.0.0.1:13300
+
   netdata:
     image: netdata/netdata
     hostname: example.com # set to fqdn of host
