@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bc00ac782bbab223c20480f8ed9df17",
+    "content-hash": "7c44c2e5acf00840d3da677e88469e73",
     "packages": [
         {
             "name": "ezyang/htmlpurifier",
@@ -52,6 +52,23 @@
                 "html"
             ],
             "time": "2019-10-28T03:44:26+00:00"
+        },
+        {
+            "name": "phpclasses/inputfilter",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://www.phpclasses.org/install/package/inputfilter.zip"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "class.inputfilter.php",
+                    "class.inputfilter_clean.php",
+                    "class.inputfilter.php5",
+                    "class.inputfilter_clean.php5"
+                ]
+            }
         },
         {
             "name": "psr/container",

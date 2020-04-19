@@ -12,6 +12,10 @@ use HTMLPurifier_Config;
  */
 class HtmlPurifier implements Sanitizer
 {
+    /**
+     * @param $text
+     * @return string
+     */
     public function doSanitize($text): string
     {
         $config = HTMLPurifier_Config::createDefault();
@@ -21,7 +25,10 @@ class HtmlPurifier implements Sanitizer
         return $purifier->purify($text);
     }
 
-    public function __toString()
+    /**
+     * @return string
+     */
+    public function __toString(): string
     {
         return 'HtmlPurifier';
     }

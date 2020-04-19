@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App;
 
 /**
- * Class StripTags
+ * Class PhpInputFilter
  * @package App
  */
-class StripTags implements Sanitizer
+class PhpInputFilter implements Sanitizer
 {
     /**
      * @param $text
@@ -16,7 +16,10 @@ class StripTags implements Sanitizer
      */
     public function doSanitize($text): string
     {
-        return strip_tags($text, '<b><img><a>');
+        $tags = ["a", "img"];
+        $filter = new \InputFilter($tags, ["src"], 0, 0);
+
+        return $filter->process($text) ?? '';
     }
 
     /**
@@ -24,6 +27,6 @@ class StripTags implements Sanitizer
      */
     public function __toString(): string
     {
-        return 'PHP strip_tags';
+        return 'PHP Input Filter';
     }
 }

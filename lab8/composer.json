@@ -16,6 +16,17 @@
     "require": {
         "vanilla/htmlawed": "^2.2",
         "symfony/console": "^5.0",
-        "ezyang/htmlpurifier": "^4.12"
-    }
+        "ezyang/htmlpurifier": "^4.12",
+        "phpclasses/inputfilter": ">=1.0.0"
+    },
+    "repositories":
+    [
+        {
+            "type": "composer",
+            "url": "https:\/\/www.phpclasses.org\/"
+        },
+        {
+            "packagist": false
+        }
+    ]
 }

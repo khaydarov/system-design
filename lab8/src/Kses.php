@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App;
 
 /**
- * Class StripTags
+ * Class Kses
  * @package App
  */
-class StripTags implements Sanitizer
+class Kses implements Sanitizer
 {
     /**
      * @param $text
@@ -16,7 +16,7 @@ class StripTags implements Sanitizer
      */
     public function doSanitize($text): string
     {
-        return strip_tags($text, '<b><img><a>');
+        return kses($text, []) ?? '';
     }
 
     /**
@@ -24,6 +24,6 @@ class StripTags implements Sanitizer
      */
     public function __toString(): string
     {
-        return 'PHP strip_tags';
+        return 'Kses';
     }
 }
