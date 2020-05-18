@@ -19,7 +19,19 @@ class HtmlPurifier implements Sanitizer
     public function doSanitize($text): string
     {
         $config = HTMLPurifier_Config::createDefault();
-        $config->set('HTML.Allowed', '');
+
+        $config->set('HTML.Allowed', '*');
+//        $config->set('Attr.AllowedClasses', 'cdx-marked-text, marked-text');
+//
+//        $config->set('HTML.TargetNoopener', true);
+//        $config->set('HTML.TargetNoreferrer', true);
+//        $config->set('HTML.TargetBlank', true);
+//        $config->set('HTML.Nofollow', true);
+//        $config->set('URI.AllowedSchemes', ['http' => true, 'https' => true, 'mailto' => true]);
+//        $config->set('AutoFormat.RemoveEmpty', true);
+//
+//        $config->set('HTML.DefinitionID', 'html5-definitions'); // unqiue id
+//        $config->set('HTML.DefinitionRev', 1);
 
         $purifier = new \HTMLPurifier($config);
         return $purifier->purify($text);

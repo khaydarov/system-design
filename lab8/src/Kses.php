@@ -16,7 +16,9 @@ class Kses implements Sanitizer
      */
     public function doSanitize($text): string
     {
-        return kses($text, []) ?? '';
+        return kses_split2($text, [
+            'img' => []
+        ], []);
     }
 
     /**

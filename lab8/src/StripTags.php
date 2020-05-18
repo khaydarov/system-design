@@ -16,7 +16,7 @@ class StripTags implements Sanitizer
      */
     public function doSanitize($text): string
     {
-        return strip_tags($text, '<b><img><a>');
+        return strip_tags($text, '<b><a>');
     }
 
     /**

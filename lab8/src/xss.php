@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 return [
-    '<script>alert(vvv);</script>',
+    "1\" onerror='alert(document.cookie)'",
+    "1' onerror='alert('XSS exploited')'",
+    "<script>alert('XSS exploited');</script>",
     '<div><b><span class="" onerror=""><tag><script>fff</script></script></tag></span></div>',
     '<b>gggg',
     "'-- drop table",
