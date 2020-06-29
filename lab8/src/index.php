@@ -2,6 +2,7 @@
 
 use App\Kses;
 use App\Renderer;
+use App\Sanitizer;
 use App\StripTags;
 use App\Htmlawed;
 use App\HtmlPurifier;
@@ -51,21 +52,24 @@ class Main
 
         $duration = $end - $start;
 
-//        $str = (string) $duration;
-
+        var_dump($duration);
         echo $duration / count($this->xssStrings);
 //        $b = str_replace('.', ',', $str);
 //        echo $b . '<br>';
     }
 
-    public function test($sanitizer)
+    public function test(Sanitizer $sanitizer)
     {
+        echo 'Testing mechanism: ' . $sanitizer . PHP_EOL;
         $clean = [];
-        foreach ($this->xssStrings as $string) {
-            $t = $sanitizer->doSanitize($string);
-            $clean[] = $t;
+        foreach ($this->xssStrings as $i => $string) {
+//            echo 'Attack ' . ($i + 1) . ':' . PHP_EOL;
+//            echo 'TaintString: ' . $string . PHP_EOL;
+            $t = $sanitizer->doSanitize((string) $string);
+//            echo 'ProcessedString: ' . $t . PHP_EOL;
+            echo PHP_EOL;
 
-            echo $t . PHP_EOL;
+            $clean[] = $t;
         }
 
         return $clean;
@@ -85,7 +89,7 @@ class Main
 }
 
 $app = new Main();
-echo $app->test($app->getSanitizer(2));
+//echo $app->test($app->getSanitizer(0));
 //for ($i = 0; $i < 100; $i++) {
-//$app->measure(3);
+$app->measure(3);
 //}
