@@ -1,0 +1,22 @@
+{
+    "name": "khaydarovm/lab9",
+    "authors": [
+        {
+            "name": "Murod Khaydarov",
+            "email": "murod.haydarov@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": [
+                "src"
+            ]
+        }
+    },
+    "require": {
+        "webonyx/graphql-php": "^14.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.1"
+    }
+}
