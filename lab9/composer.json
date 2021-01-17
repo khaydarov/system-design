@@ -10,13 +10,23 @@
         "psr-4": {
             "App\\": [
                 "src"
-            ]
+            ],
+            "": ["src/twirp/generated"]
         }
     },
     "require": {
-        "webonyx/graphql-php": "^14.0"
+        "webonyx/graphql-php": "^14.0",
+        "twirp/twirp": "^0.6.0",
+        "google/protobuf": "^3.14",
+        "php-http/guzzle6-adapter": "^2.0",
+        "http-interop/http-factory-guzzle": "^1.0"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.1"
+    },
+    "scripts": {
+        "proto": [
+            "protoc -I . --twirp_php_out=src/twirp/generated --php_out=src/twirp/generated src/twirp/proto/service.proto"
+        ]
     }
 }

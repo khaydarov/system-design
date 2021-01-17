@@ -12,6 +12,8 @@
         }
     ],
     "require": {
-      "ext-simplexml": "*"
+      "ext-simplexml": "*",
+      "ext-sockets": "*",
+      "ext-json": "*"
     }
 }

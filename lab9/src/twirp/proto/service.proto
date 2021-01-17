@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package twirp.example.haberdasher;
+option go_package = "haberdasher";
+
+service Haberdasher {
+  rpc MakeHat(Size) returns (Hat);
+}
+
+message Size {
+  int32 inches = 1;
+}
+
+message Hat {
+  int32 inches = 1;
+  string color = 2;
+  string name = 3;
+}
