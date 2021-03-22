@@ -1,5 +1,5 @@
 {
-    "name": "php-labs/lab3",
+    "name": "php-labs/design-patterns",
     "autoload": {
         "psr-4": {
             "App\\": "src"
