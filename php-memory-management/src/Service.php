@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App;
+
+final class Service
+{
+    private $objects = [];
+
+    public function add()
+    {
+        $this->objects[] = new \StdClass();
+    }
+}

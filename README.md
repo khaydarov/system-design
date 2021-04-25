@@ -7,5 +7,6 @@
 - [Design-pattern](https://github.com/khaydarov/system-design/tree/master/design-patterns)
 - [Matrin Fowler patterns](https://github.com/khaydarov/system-design/tree/master/martin-fowler-patterns)
 - [Matt Zandra Book](https://github.com/khaydarov/system-design/tree/master/matt-zandra-book)
-- [PHP-FPM analogues](https://github.com/khaydarov/system-design/tree/master/php-fpm-analogues)
-- [REST API analogues](https://github.com/khaydarov/system-design/tree/master/rest-analogues)
+- [PHP-FPM alternatives](https://github.com/khaydarov/system-design/tree/master/php-fpm-alternatives)
+- [PHP memory management](https://github.com/khaydarov/system-design/tree/master/php-memory-management)
+- [REST API alternatives](https://github.com/khaydarov/system-design/tree/master/rest-alternatives)
