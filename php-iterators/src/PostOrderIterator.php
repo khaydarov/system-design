@@ -87,7 +87,7 @@ final class PostOrderIterator implements \Iterator
      */
     public function rewind(): void
     {
-        $this->current = $this->root;
+        $this->current = null;
     }
 
     /**
