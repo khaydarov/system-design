@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 namespace App;
 
-class TreeNodeStack
+/**
+ * Class TreeNodeStack
+ * LIFO data structure
+ *
+ * @package App
+ */
+final class TreeNodeStack
 {
     /**
      * @var TreeNode[]

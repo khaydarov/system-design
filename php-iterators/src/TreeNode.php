@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace App;
 
-class TreeNode implements \IteratorAggregate
+/**
+ * Class TreeNode
+ *
+ * @package App
+ */
+final class TreeNode
 {
     /**
      * @var int
@@ -21,6 +26,13 @@ class TreeNode implements \IteratorAggregate
      */
     private $right;
 
+    /**
+     * TreeNode constructor.
+     *
+     * @param int $value
+     * @param TreeNode|null $left
+     * @param TreeNode|null $right
+     */
     public function __construct(int $value, ?TreeNode $left = null, ?TreeNode $right = null)
     {
         $this->value = $value;
@@ -28,23 +40,33 @@ class TreeNode implements \IteratorAggregate
         $this->right = $right;
     }
 
+    /**
+     * Returns node value
+     *
+     * @return int
+     */
     public function getValue(): int
     {
         return $this->value;
     }
 
+    /**
+     * Returns left node
+     *
+     * @return TreeNode|null
+     */
     public function getLeftNode(): ?TreeNode
     {
         return $this->left;
     }
 
+    /**
+     * Returns right node
+     *
+     * @return TreeNode|null
+     */
     public function getRightNode(): ?TreeNode
     {
         return $this->right;
-    }
-
-    public function getIterator()
-    {
-        return new \ArrayIterator($this);
     }
 }

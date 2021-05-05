@@ -6,27 +6,36 @@ namespace App;
 
 /**
  * Class InOrderIterator
+ * Traversal: left-root-right
+ *
  * @package App
  */
-class InOrderIterator implements \Iterator
+final class InOrderIterator implements \Iterator
 {
     /**
+     * Root from that traversal starts
+     *
      * @var TreeNode
      */
     private $root;
 
     /**
+     * Working node
+     *
      * @var TreeNode
      */
     private $current;
 
     /**
+     * Stack: LIFO data structure
+     *
      * @var TreeNodeStack
      */
     private $stack;
 
     /**
      * InOrderIterator constructor.
+     *
      * @param TreeNode $root
      */
     public function __construct(TreeNode $root)

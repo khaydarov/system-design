@@ -5,36 +5,30 @@ declare(strict_types=1);
 namespace App;
 
 /**
- * Class PreOrderIterator
- * Traversal: root-left-right
+ * Class DFS
+ * Depth-first search
  *
  * @package App
  */
-final class PreOrderIterator implements \Iterator
+final class DFS implements \Iterator
 {
     /**
-     * Root from that traversal starts
-     *
      * @var TreeNode
      */
     private $root;
 
     /**
-     * Working node
-     *
      * @var TreeNode
      */
     private $current;
 
     /**
-     * Stack: LIFO data structure
-     *
      * @var TreeNodeStack
      */
     private $stack;
 
     /**
-     * PreOrderIterator constructor.
+     * DFS constructor.
      *
      * @param TreeNode $root
      */
@@ -56,17 +50,18 @@ final class PreOrderIterator implements \Iterator
     }
 
     /**
-     * Moves to the next node
+     * Adds node to stack and moves forward
      */
     public function next(): void
     {
-        $current = $this->stack->Pop();
-        if ($current && $current->getRightNode() !== null) {
-            $this->stack->push($current->getRightNode());
+        $current = $this->stack->pop();
+
+        if ($current !== null && $current->getLeftNode() !== null) {
+            $this->stack->push($current->getLeftNode());
         }
 
-        if ($current && $current->getLeftNode() !== null) {
-            $this->stack->push($current->getLeftNode());
+        if ($current !== null && $current->getRightNode() !== null) {
+            $this->stack->push($current->getRightNode());
         }
 
         $this->current = $this->stack->top();
@@ -75,7 +70,7 @@ final class PreOrderIterator implements \Iterator
     /**
      * Stub
      */
-    public function key(): void
+    public function key()
     {
     }
 
@@ -84,13 +79,13 @@ final class PreOrderIterator implements \Iterator
      */
     public function valid(): bool
     {
-        return $this->current != null;
+        return !$this->stack->isEmpty();
     }
 
     /**
-     * Sets current to the root node
+     * Sets current node to root node
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->current = $this->root;
     }
