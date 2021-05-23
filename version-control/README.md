@@ -8,44 +8,50 @@ Inspects, updates and manages sub git projects
 
 *To add a new submodule on project*
 
-```gitexclude
+```bash
 git submodule add $repo
 ```
 
 *After cloning a repo with submodules*
 
-```gitexclude
+```bash
 git submodule init
 git submodule update
 ```
 
 or 
 
-```gitexclude
+```bash
 git submodule update --init
 ```
 
 or
 
-```gitexclude
+```bash
 git clone --recurse-submodules $mainrepo
 ```
 
 *To fetch and merge changes*
 
-```gitexclude
+```bash
 git submodule update --remote $subrepo
 ```
 
 *To merge local and remote changes on submodule*
 
-```gitexclude
+```bash
 git submodule update --remote --rebase (--merge)
 ```
 
 *To push local changes*
 
-```gitexclude
+```bash
 git push --recurse-submodules=check
 git push --recurse-submodules=on-demand
+```
+
+*To execute command for all submodules
+
+```bash
+git submodule foreach 'git status'
 ```
