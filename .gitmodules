@@ -1,0 +1,6 @@
+[submodule "version-control/git-submodules/php-clickhouse-migrator"]
+	path = version-control/git-submodules/php-clickhouse-migrator
+	url = https://github.com/khaydarov/php-clickhouse-migrator
+[submodule "version-control/git-submodules/ITMO-crypto-lab"]
+	path = version-control/git-submodules/ITMO-crypto-lab
+	url = https://github.com/khaydarov/ITMO-crypto-lab
