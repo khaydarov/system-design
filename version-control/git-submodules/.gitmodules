@@ -1,0 +1,2 @@
+[submodule "ITMO-crypto-lab"]
+	branch = dependabot/npm_and_yarn/lodash-4.17.21
