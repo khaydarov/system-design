@@ -1,0 +1,21 @@
+{
+    "name": "khaydarovm/ddd-in-php",
+    "authors": [
+        {
+            "name": "Murod Khaydarov",
+            "email": "murod.haydarov@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "symfony/var-dumper": "^5.3",
+        "aura/sql": "^3.0",
+        "jms/serializer": "^3.14",
+        "symfony/yaml": "^5.3",
+        "symfony/cache": "^5.3"
+    }
+}

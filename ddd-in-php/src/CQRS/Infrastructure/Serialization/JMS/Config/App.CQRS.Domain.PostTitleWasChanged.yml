@@ -1,0 +1,9 @@
+App\CQRS\Domain\PostTitleWasChanged:
+  exclusion_policy: ALL
+
+  properties:
+    postId:
+      type: App\CQRS\Domain\PostId
+
+    title:
+      type: string

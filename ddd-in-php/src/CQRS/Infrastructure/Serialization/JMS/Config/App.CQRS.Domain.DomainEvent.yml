@@ -1,0 +1,6 @@
+App\CQRS\Domain\DomainEvent:
+  exclusion_policy: ALL
+
+  properties:
+    occurredOn:
+      type: DateTimeImmutable

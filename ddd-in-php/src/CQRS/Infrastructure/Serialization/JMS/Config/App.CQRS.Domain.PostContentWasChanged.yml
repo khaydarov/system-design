@@ -1,0 +1,9 @@
+App\CQRS\Domain\PostContentWasChanged:
+  exclusion_policy: NONE
+
+  properties:
+    postId:
+      type: App\CQRS\Domain\PostId
+
+    content:
+      type: string

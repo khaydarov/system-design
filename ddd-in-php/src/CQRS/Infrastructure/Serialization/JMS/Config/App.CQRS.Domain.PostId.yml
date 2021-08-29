@@ -1,0 +1,6 @@
+App\CQRS\Domain\PostId:
+  exclusion_policy: ALL
+
+  properties:
+    value:
+      type: int

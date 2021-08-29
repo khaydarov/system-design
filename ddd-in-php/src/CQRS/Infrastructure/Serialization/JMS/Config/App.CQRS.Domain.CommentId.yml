@@ -1,0 +1,6 @@
+App\CQRS\Domain\CommentId:
+  exclusion_policy: NONE
+
+  properties:
+    value:
+      type: int

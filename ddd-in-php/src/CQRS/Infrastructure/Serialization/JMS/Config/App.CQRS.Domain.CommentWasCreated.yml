@@ -1,0 +1,12 @@
+App\CQRS\Domain\CommentWasCreated:
+  exclusion_policy: NONE
+
+  properties:
+    commentId:
+      type: App\CQRS\Domain\CommentId
+
+    text:
+      type: string
+
+    postId:
+      type: App\CQRS\Domain\PostId

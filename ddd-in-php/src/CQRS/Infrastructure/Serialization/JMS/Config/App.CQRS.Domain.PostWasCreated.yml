@@ -1,0 +1,12 @@
+App\CQRS\Domain\PostWasCreated:
+  exclusion_policy: NONE
+
+  properties:
+    postId:
+      type: App\CQRS\Domain\PostId
+
+    title:
+      type: string
+
+    content:
+      type: string
