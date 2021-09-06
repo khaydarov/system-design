@@ -9,6 +9,7 @@ use App\CQRS\Domain\CommentId;
 use App\CQRS\Domain\CommentRepository;
 use App\CQRS\Domain\PostId;
 use App\CQRS\Domain\PostRepository;
+use App\CQRS\Infrastructure\Service\DefaultSpamChecker;
 
 class CommentCommand
 {
@@ -36,6 +37,11 @@ class CommentCommand
         $this->postRepository->save($post);
 
         $comment = $this->commentRepository->findById(CommentId::fromValue($id));
+        $spamChcker = new DefaultSpamChecker();
+        if ($spamChcker->execute($comment)) {
+            throw new \Exception('comment text is marked as spam');
+        }
+
         $comment->changeText('updated text');
 
         $this->commentRepository->save($comment);

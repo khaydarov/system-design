@@ -41,13 +41,13 @@ class CommentWasCreatedProjection implements Projection
     public function project($event)
     {
         $this->pdo->fetchOne(
-            "INSERT INTO comments (id, post_id, created_at, content)
-                        VALUES (:id, :post_id, :created_at, :content)",
+            "INSERT INTO comments (id, post_id, created_at, text)
+                        VALUES (:id, :post_id, :created_at, :text)",
             [
                 'id' => $event->getAggregateId()->getValue(),
                 'post_id' => $event->getPostId()->getValue(),
                 'created_at' => ($event->occurredOn())->format('Y-m-d H:m:s'),
-                'content' => $event->getText()
+                'text' => $event->getText()
             ]
         );
     }

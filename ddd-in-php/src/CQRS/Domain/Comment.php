@@ -26,6 +26,22 @@ class Comment extends AggregateRoot
     }
 
     /**
+     * @return CommentId
+     */
+    public function getId(): CommentId
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getText(): string
+    {
+        return $this->text;
+    }
+
+    /**
      * @param PostId $postId
      * @param string $text
      * @return Comment

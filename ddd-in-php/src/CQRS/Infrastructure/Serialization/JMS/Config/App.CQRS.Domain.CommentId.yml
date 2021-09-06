@@ -1,5 +1,5 @@
 App\CQRS\Domain\CommentId:
-  exclusion_policy: NONE
+  exclusion_policy: ALL
 
   properties:
     value:

@@ -1,0 +1,9 @@
+App\CQRS\Domain\CommentTextWasChanged:
+  exclusion_policy: NONE
+
+  properties:
+    commentId:
+      type: App\CQRS\Domain\CommentId
+
+    text:
+      type: string

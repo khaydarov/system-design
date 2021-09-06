@@ -11,3 +11,5 @@
 - [PHP memory management](https://github.com/khaydarov/system-design/tree/master/php-memory-management)
 - [PHP iterators](https://github.com/khaydarov/system-design/tree/master/php-iterators)
 - [REST API alternatives](https://github.com/khaydarov/system-design/tree/master/rest-alternatives)
+- [JSON-API specification outlines](https://github.com/khaydarov/system-design/tree/master/jsonapi)
+- [Domain Driven Design in PHP](https://github.com/khaydarov/system-design/tree/master/ddd-in-php)
