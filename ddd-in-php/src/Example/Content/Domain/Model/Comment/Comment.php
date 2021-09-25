@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\Example\Content\Domain\Model\Comment;
 
 use App\Example\Content\Domain\Model\Entry\EntryId;
+use App\Example\Shared\Domain\AggregateRoot;
 
-class Comment
+class Comment extends AggregateRoot
 {
     /**
      * @var CommentId

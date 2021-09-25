@@ -26,4 +26,11 @@ interface EntryRepository
      * @return Entry|null
      */
     public function findById(EntryId $entryId): ?Entry;
+
+    /**
+     * @param CreatorId $creatorId
+     *
+     * @return mixed
+     */
+    public function findByCreatorId(CreatorId $creatorId);
 }

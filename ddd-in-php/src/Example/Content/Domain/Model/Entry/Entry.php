@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Example\Content\Domain\Model\Entry;
 
-use App\Example\Content\Domain\Model\AggregateRoot;
+use App\Example\Shared\Domain\AggregateRoot;
 
 class Entry extends AggregateRoot
 {
@@ -12,6 +12,11 @@ class Entry extends AggregateRoot
      * @var EntryId
      */
     private $id;
+
+    /**
+     * @var CreatorId
+     */
+    private $creatorId;
 
     /**
      * @var string
@@ -23,9 +28,14 @@ class Entry extends AggregateRoot
      */
     private $state;
 
-    public function __construct(EntryId $id, string $content, EntryState $state)
-    {
+    public function __construct(
+        EntryId $id,
+        CreatorId $creatorId,
+        string $content,
+        EntryState $state
+    ) {
         $this->id = $id;
+        $this->creatorId = $creatorId;
         $this->content = $content;
         $this->state = $state;
 
@@ -48,6 +58,11 @@ class Entry extends AggregateRoot
     public function getContent(): string
     {
         return $this->content;
+    }
+
+    public function getCreatorId(): CreatorId
+    {
+        return $this->creatorId;
     }
 
     /**
@@ -77,16 +92,5 @@ class Entry extends AggregateRoot
         $this->recordEvent(
             new EntryWasPublished($this->id, new \DateTimeImmutable())
         );
-    }
-
-    /**
-     * @param EntryId $entryId
-     * @param string $content
-     *
-     * @return static
-     */
-    public static function fromValues(EntryId $entryId, string $content, EntryState $state): self
-    {
-        return new Entry($entryId, $content, $state);
     }
 }

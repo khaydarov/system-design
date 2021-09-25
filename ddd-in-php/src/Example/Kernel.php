@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Example\Content\Ui\Web;
+namespace App\Example;
 
-use App\Example\Content\Domain\Model\Entry\EntryRepository;
-use App\Example\Content\Ui\Web\Controller\EntryController;
-use App\Example\Content\Ui\Web\Controller\MainController;
 use DI\Container;
 use DI\ContainerBuilder;
 use FastRoute\Dispatcher;
@@ -28,8 +25,14 @@ class Kernel
      */
     private $dispatcher;
 
-    public function __construct()
+    /**
+     * @var array
+     */
+    private $contexts = [];
+
+    public function __construct(array $contexts)
     {
+        $this->contexts = $contexts;
         $this->bootstrap();
     }
 
@@ -41,18 +44,32 @@ class Kernel
 
     private function buildContainer()
     {
-        // init DI
-        $definitions = include_once './di/definitions.php';
+        $definitions = [];
+        foreach ($this->contexts as $context) {
+            $path = $context . 'di.php';
+            if (is_file($path)) {
+                $definitions = array_merge($definitions, include_once $path);
+            }
+        }
+
         $builder = new ContainerBuilder();
         $builder
             ->addDefinitions($definitions)
             ->useAutowiring(true);
+
         $this->container = $builder->build();
     }
 
     private function buildRouteDispatcher()
     {
-        $routes = include_once './routes/routes.php';
+        $routes = [];
+        foreach ($this->contexts as $context) {
+            $path = $context . 'Ui/Web/routes.php';
+            if (is_file($path)) {
+                $routes = array_merge($routes, include_once $path);
+            }
+        }
+
         $routeCollector = new RouteCollector(new \FastRoute\RouteParser\Std(), new \FastRoute\DataGenerator\GroupCountBased());
 
         foreach ($routes as $route) {

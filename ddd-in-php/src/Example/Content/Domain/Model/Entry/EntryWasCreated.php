@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Example\Content\Domain\Model\Entry;
 
-use App\Example\Content\Domain\Model\DomainEvent;
+use App\Example\Shared\Domain\DomainEvent;
 
 class EntryWasCreated implements DomainEvent
 {

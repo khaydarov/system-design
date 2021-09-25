@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Example\Content\Domain\Model;
+namespace App\Example\Shared\Domain;
 
 interface DomainEvent
 {
