@@ -30,7 +30,10 @@ class EntryCreateCommandHandler implements CommandHandler
     public function handle($command)
     {
         $query = new UserFindQuery($command->getUserId());
-        $user = $this->queryBus->ask($query);
+
+        $result = $this->queryBus->ask($query);
+
+        // validation...
 
         $entry = new Entry(
             new EntryId(10),

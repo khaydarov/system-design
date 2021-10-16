@@ -1,5 +1,5 @@
 {
-    "name": "khaydarovm/martin-fowler-patterns",
+    "name": "khaydarovm/php-algorithms",
     "authors": [
         {
             "name": "Murod Khaydarov",
@@ -14,8 +14,6 @@
         }
     },
     "require": {
-        "psy/psysh": "@stable",
-        "phpunit/phpunit": "^8.5",
         "symfony/var-dumper": "^5.3"
     }
 }

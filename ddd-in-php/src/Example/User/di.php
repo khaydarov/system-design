@@ -7,5 +7,5 @@ use Aura\Sql\ExtendedPdo;
 return [
     UserRepository::class => function (ExtendedPdo $pdo) {
         return new PsqlUserRepository($pdo);
-    }
+    },
 ];

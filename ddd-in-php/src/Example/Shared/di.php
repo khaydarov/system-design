@@ -17,5 +17,5 @@ return [
     },
     QueryBus::class => function (Container $container) {
         return new QueryBus($container);
-    }
+    },
 ];

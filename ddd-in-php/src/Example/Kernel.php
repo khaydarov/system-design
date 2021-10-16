@@ -48,7 +48,7 @@ class Kernel
         foreach ($this->contexts as $context) {
             $path = $context . 'di.php';
             if (is_file($path)) {
-                $definitions = array_merge($definitions, include_once $path);
+                $definitions = array_merge_recursive($definitions, include_once $path);
             }
         }
 
