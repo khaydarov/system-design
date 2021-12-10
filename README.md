@@ -4,12 +4,9 @@
 
 ### Table of contents
 
-- [Design-pattern](https://github.com/khaydarov/system-design/tree/master/design-patterns)
-- [Matrin Fowler patterns](https://github.com/khaydarov/system-design/tree/master/martin-fowler-patterns)
-- [Matt Zandra Book](https://github.com/khaydarov/system-design/tree/master/matt-zandra-book)
-- [PHP-FPM alternatives](https://github.com/khaydarov/system-design/tree/master/php-fpm-alternatives)
-- [PHP memory management](https://github.com/khaydarov/system-design/tree/master/php-memory-management)
-- [PHP iterators](https://github.com/khaydarov/system-design/tree/master/php-iterators)
+- [Design Patterns](https://github.com/khaydarov/system-design/tree/master/design-patterns)
 - [REST API alternatives](https://github.com/khaydarov/system-design/tree/master/rest-alternatives)
 - [JSON-API specification outlines](https://github.com/khaydarov/system-design/tree/master/jsonapi)
-- [Domain Driven Design in PHP](https://github.com/khaydarov/system-design/tree/master/ddd-in-php)
+- [Domain Driven Design](https://github.com/khaydarov/system-design/tree/master/domain-driven-design)
+- [Version control](https://github.com/khaydarov/system-design/tree/master/version-control)
+- [WebRTC](https://github.com/khaydarov/system-design/tree/master/webrtc)
