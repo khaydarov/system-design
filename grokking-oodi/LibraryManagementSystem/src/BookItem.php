@@ -105,14 +105,17 @@ final class BookItem extends Book
 
     /**
      * @param Member $member
+     * @param BookLending $bookLending
+     *
      * @throws \Exception
      */
-    public function checkOut(Member $member)
+    public function checkOut(Member $member, BookLending $bookLending)
     {
         if (!$this->isAvailable()) {
             throw new \Exception("This book is not available");
         }
 
+        $bookLending->lendBook($this, $member);
         $this->status = BookStatus::loaned();
     }
 }

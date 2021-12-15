@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\LibraryManagementSystem\Account;
 
 use App\LibraryManagementSystem\BookItem;
+use App\LibraryManagementSystem\BookLending;
 use App\LibraryManagementSystem\BookReservation;
 
 final class Member extends Account
@@ -61,7 +62,7 @@ final class Member extends Account
      *
      * @throws \Exception
      */
-    public function checkOutBookItem(BookItem $bookItem, BookReservation $bookReservation): void
+    public function checkOutBookItem(BookItem $bookItem, BookReservation $bookReservation, BookLending $bookLending): void
     {
         if ($this->totalBooksCheckedOut >= 3) {
             throw new \Exception('Limit exceeded');
@@ -77,7 +78,7 @@ final class Member extends Account
         }
 
         $bookReservation->updateReservationStatus($bookItem, $this);
-        $bookItem->checkOut($this);
+        $bookItem->checkOut($this, $bookLending);
         $this->totalBooksCheckedOut++;
     }
 
