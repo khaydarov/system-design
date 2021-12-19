@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\LibraryManagementSystem;
+namespace LibraryManagementSystem;
 
-use App\LibraryManagementSystem\Account\Member;
+use LibraryManagementSystem\Account\Member;
 
 final class BookItem extends Book
 {
@@ -103,19 +103,17 @@ final class BookItem extends Book
         return $this->getStatus()->getValue() === BookStatus::AVAILABLE;
     }
 
-    /**
-     * @param Member $member
-     * @param BookLending $bookLending
-     *
-     * @throws \Exception
-     */
-    public function checkOut(Member $member, BookLending $bookLending)
+    public function reserve(): void
+    {
+        $this->status = BookStatus::reserved();
+    }
+
+    public function checkOut(): void
     {
         if (!$this->isAvailable()) {
             throw new \Exception("This book is not available");
         }
 
-        $bookLending->lendBook($this, $member);
         $this->status = BookStatus::loaned();
     }
 }

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\LibraryManagementSystem\Account;
+namespace LibraryManagementSystem\Account;
 
-use App\LibraryManagementSystem\BookItem;
-use App\LibraryManagementSystem\BookLending;
-use App\LibraryManagementSystem\BookReservation;
+use LibraryManagementSystem\BookItem;
+use LibraryManagementSystem\BookLending;
+use LibraryManagementSystem\BookReservation;
 
 final class Member extends Account
 {
@@ -30,30 +30,6 @@ final class Member extends Account
 
         $this->dateOfMembership = $dateOfMembership;
         $this->totalBooksCheckedOut = $totalBooksCheckedOut;
-    }
-
-    /**
-     * @param BookItem $bookItem
-     * @param BookReservation $bookReservation
-     *
-     * @throws \Exception
-     */
-    public function reserveBookItem(BookItem $bookItem, BookReservation $bookReservation): void
-    {
-        if (!$bookItem->isAvailable()) {
-            throw new \Exception('Book is not available');
-        }
-
-        $reservationDetails = $bookReservation->fetchReservationDetails($bookItem->getBarCode());
-        if ($reservationDetails->isBorrowed() && $reservationDetails->getMemberId() === $this->getId()) {
-            throw new \Exception("Your already have reserved this book");
-        }
-
-        if ($reservationDetails->isBorrowed() && $reservationDetails->getMemberId() !== $this->getId()) {
-            throw new \Exception("This book is already reserved by another user");
-        }
-
-        $bookReservation->updateReservationStatus($bookItem, $this);
     }
 
     /**

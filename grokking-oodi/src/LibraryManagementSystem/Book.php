@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\LibraryManagementSystem;
+namespace LibraryManagementSystem;
 
 abstract class Book
 {

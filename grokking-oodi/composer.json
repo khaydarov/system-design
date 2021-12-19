@@ -1,0 +1,18 @@
+{
+    "name": "khaydarovm/grokking-oodi",
+    "authors": [
+        {
+            "name": "Murod Khaydarov",
+            "email": "murod.haydarov@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "LibraryManagementSystem\\": "src/LibraryManagementSystem",
+            "ParkingLot\\": "src/ParkingLot"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
+}

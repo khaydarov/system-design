@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\LibraryManagementSystem;
+namespace LibraryManagementSystem;
 
-use App\LibraryManagementSystem\Account\Member;
+use LibraryManagementSystem\Account\Member;
 
 interface BookLending
 {

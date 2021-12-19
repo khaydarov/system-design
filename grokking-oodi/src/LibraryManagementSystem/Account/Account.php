@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\LibraryManagementSystem\Account;
+namespace LibraryManagementSystem\Account;
 
 class Account
 {
