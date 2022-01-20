@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: otus-task1-deployment
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: otus-task1-app
