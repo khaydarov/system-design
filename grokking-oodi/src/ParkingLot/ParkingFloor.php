@@ -11,6 +11,16 @@ final class ParkingFloor
      */
     private $name;
 
+    /**
+     * @var array
+     */
+    private $handicappedSpots = [];
+
+    /**
+     * @var array
+     */
+    private $compactSpots = [];
+
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -24,19 +34,25 @@ final class ParkingFloor
         return $this->name;
     }
 
-    public function updateDisplayBoard(): void
+    public function addParkingSpot(ParkingSpot $spot): void
     {
+        switch ($spot->getType()) {
+            case ParkingSpotType::HANDICAPPED:
+                $this->handicappedSpots[$spot->getNumber()] = $spot;
+                break;
+            case ParkingSpotType::COMPACT:
+                $this->compactSpots[$spot->getNumber()] = $spot;
+                break;
+        }
     }
 
-    public function addParkingSlot(): void
+    public function assignVehicleToSpot(Vehicle $vehicle, ParkingSpot $spot): void
     {
+        $spot->assignVehicle($vehicle);
     }
 
-    public function assignVehicleToSlot(): void
+    public function freeSpot(ParkingSpot $spot): void
     {
-    }
-
-    public function freeSlot(): void
-    {
+        $spot->removeVehicle();
     }
 }

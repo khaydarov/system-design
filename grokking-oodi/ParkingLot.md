@@ -40,5 +40,5 @@ Main Actors:
 - Parking attendant
 - System
 
-![img.png](img.png)
+![images/parking-lot.png](images/parking-lot.png)
   

@@ -6,7 +6,7 @@ namespace App\PatkingLot;
 
 final class ParkingAttendant extends Account
 {
-    public function processTicket(): bool
+    public function processTicket(string $ticketNumber): bool
     {
         return true;
     }
