@@ -15,7 +15,7 @@ final class MainController extends AbstractController
      */
     public function index(): JsonResponse
     {
-        return $this->json("Hello, dear User");
+        return $this->json("Hello, dear User!");
     }
 
     /**
