@@ -1,34 +1,18 @@
-#### Сборка образа
+## ДЗ 1
+
+1. Создать сервис, который отвечает на порту 8000
+2. Добавить Endpoint `/health` в сервисе, который вернет `{"status": "OK"}`
+3. Залить образ на DockerHub
+4. Написать все манифесты для сущностей Deployment, Service, Ingress
+5. Добавить Liveness, Readiness пробы
+6. Количество реплик сервиса должно быть не меньше 2
+7. Хост в Ingress должен быть `arch.homework`
+
+Задание со звёздочкой: В Ingress-е должно быть правило, которое форвардит все запросы с /otusapp/{student name}/* на сервис с rewrite-ом пути. Где {student name} - это имя студента.
+
+### Инструкция по запуску
+
 ```shell
-docker build -t khaydarov95/otus-task1:latest .
+kubectl apply -f deployment.yaml -f service.yaml
 ```
 
-#### Запуск контейнера с приложением
-```shell
-docker run -d -p 8080:80 -v "$PWD":/usr/src/app khaydarov95/otus-task1:latest
-```
-
-#### Зайти в контейнер
-```shell
-kubectl exec --stdin --tty otus-task1 /bin/bash
-```
-
-#### История по deployment
-```shell
-kubectl rollout history deployment/otus-task1-deployment
-```
-
-#### Обновление версии приложения (образа)
-```shell
-kubectl set image deployment/otus-task1-deployment otus-task1-deployment=khaydarov95/otus-task1 --record
-```
-
-#### Откатываение версии приложения (образа)
-```shell
-kubectl rollout undo deployment otus-task1-deployment
-```
-
-#### Скейлинг деплоймента
-```shell
-kubectl scale --replicas=4 deployment/otus-task1-deployment
-```
