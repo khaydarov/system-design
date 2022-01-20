@@ -6,14 +6,14 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: otus-task1
+      app: otus-task1-app
   template:
     metadata:
       labels:
-        app: otus-task1
+        app: otus-task1-app
     spec:
       containers:
-        - name: otus-task1-rs
-          image: khaydarov95/otus-task1:latest
+        - name: otus-task1
+          image: khaydarov95/otus-task1:v4
           ports:
             - containerPort: 80

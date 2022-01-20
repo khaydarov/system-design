@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: otus-task1
+  name: otus-task1-pod
   labels:
-    app: otus-task1
+    app: otus-task1-app
 spec:
   containers:
     - name: otus-task1
-      image: khaydarov95/otus-task1:latest
+      image: khaydarov95/otus-task1:v4
       ports:
         - containerPort: 80

@@ -4,7 +4,7 @@ metadata:
   name: otus-task1-service
 spec:
   selector:
-    app: otus-task1-deployment
+    app: otus-task1-app
   ports:
     - protocol: TCP
       port: 8080
