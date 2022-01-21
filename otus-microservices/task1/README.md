@@ -13,6 +13,6 @@
 ### Инструкция по запуску
 
 ```shell
-kubectl apply -f deployment.yaml -f service.yaml
+kubectl apply -f deployment.yaml -f service.yaml -f ingress.yaml
 ```
 
