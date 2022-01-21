@@ -1,11 +1,11 @@
 #### Сборка образа
 ```shell
-docker build -t khaydarov95/otus-task1:latest .
+docker build -t khaydarov95/otus-task1:v1 .
 ```
 
 #### Запуск контейнера с приложением
 ```shell
-docker run -d -p 8080:80 -v "$PWD":/usr/src/app khaydarov95/otus-task1:latest
+docker run -d -p 8080:80 -v "$PWD":/usr/src/app khaydarov95/otus-task1:v1
 ```
 
 #### Зайти в контейнер
