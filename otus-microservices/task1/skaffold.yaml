@@ -6,7 +6,7 @@ build:
   artifacts:
   - image: khaydarov95/otus-task1
     docker:
-      dockerfile: Dockerfile
+      dockerfile: ./simple-symfony-application/Dockerfile
 deploy:
   kubectl:
     manifests:
