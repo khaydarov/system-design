@@ -10,3 +10,6 @@
 - [Domain Driven Design](https://github.com/khaydarov/system-design/tree/master/domain-driven-design)
 - [Version control](https://github.com/khaydarov/system-design/tree/master/version-control)
 - [WebRTC](https://github.com/khaydarov/system-design/tree/master/webrtc)
+- [OTUS microservices](https://github.com/khaydarov/system-design/tree/master/otus-microservices)
+- [PHP primers](https://github.com/khaydarov/system-design/tree/master/php)
+- [Kubernetes](https://github.com/khaydarov/system-design/tree/master/kubernetes)

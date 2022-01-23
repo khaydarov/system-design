@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-go
+  labels:
+    app: hello-go
+spec:
+  containers:
+    - name: hello-go
+      image: hello-go
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 8080
+      env:
+        - name: APP_CONF_VALUE
+          value: 123

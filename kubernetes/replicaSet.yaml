@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: otus-task1-rs
+  name: hello-go-rs
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: otus-task1-app
+      app: hello-go
   template:
     metadata:
       labels:
-        app: otus-task1-app
+        app: hello-go
     spec:
       containers:
-        - name: otus-task1
-          image: khaydarov95/otus-task1:v1
+        - name: hello-go
+          image: hello-go
+          imagePullPolicy: Never
           ports:
-            - containerPort: 80
+            - containerPort: 8080

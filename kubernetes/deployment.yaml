@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-go-depl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-go
+  template:
+    metadata:
+      labels:
+        app: hello-go
+    spec:
+      containers:
+        - name: hello-go
+          image: hello-go
+          imagePullPolicy: Never
+          ports:
+            - name: web
+              containerPort: 8080
+          env:
+            - name: APP_CONF_SECRET_VALUE
+              valueFrom:
+                secretKeyRef:
+                  name: hello-go-secret
+                  key: username
+            - name: APP_CONF_VALUE
+              valueFrom:
+                configMapKeyRef:
+                  name: hello-go-configmap
+                  key: someCfg
