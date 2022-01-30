@@ -12,6 +12,7 @@ service:
   port: 8000
 
 postgres:
+  replicaCount: 1
   image:
     repository: postgres
     tag: latest

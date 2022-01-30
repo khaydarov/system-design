@@ -4,7 +4,7 @@ metadata:
   name: {{ .Chart.Name }}-postgres-statefulset
 spec:
   serviceName: postgres
-  replicas: 1
+  replicas: {{ .Values.postgres.replicaCount }}
   selector:
     matchLabels:
       app: {{ .Chart.Name }}-postgres
