@@ -1,3 +1,13 @@
+To create kubectl namespace
+```shell
+kubectl create namespace myapp
+```
+
+Set default namespace
+```shell
+kubectl config set-context --current --namespace=myapp
+```
+
 To build image with defined name and tag from Dockerfile
 ```shell
 docker build -t IMAGENAME .

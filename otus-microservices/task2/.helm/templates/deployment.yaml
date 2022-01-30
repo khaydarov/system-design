@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name}}-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-{{ .Chart.Type }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-{{ .Chart.Type }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.deployment.pod.repository}}:{{ .Values.deployment.pod.tag }}
+          ports:
+            - name: web
+              containerPort: {{ .Values.deployment.pod.port }}
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  key: databaseUrl
+                  name: {{ .Chart.Name }}-secret
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.deployment.pod.port }}
+              path: /health
+            initialDelaySeconds: 5
+            periodSeconds: 2
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet:
+              port: {{ .Values.deployment.pod.port }}
+              path: /health
+            initialDelaySeconds: 2
+            periodSeconds: 2
