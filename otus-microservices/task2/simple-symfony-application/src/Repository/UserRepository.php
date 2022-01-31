@@ -53,9 +53,9 @@ class UserRepository
      */
     public function insert(User $user): void
     {
-        $this->dbal->fetchOne(
+        $this->dbal->executeQuery(
             "INSERT INTO t_users (id, username, firstname, lastname, email, phone)
-            VALUES (:id, :username, :firstname, :lastname, :email, :phone) RETURNING id
+            VALUES (:id, :username, :firstname, :lastname, :email, :phone)
         ",
         [
             'id' => $user->getId(),
@@ -74,7 +74,7 @@ class UserRepository
      */
     public function update(User $user): void
     {
-        $this->dbal->fetchOne(
+        $this->dbal->executeQuery(
         "UPDATE t_users SET 
                 username = :username,
                 firstname = :firstname,
@@ -99,7 +99,7 @@ class UserRepository
      */
     public function delete(User $user): void
     {
-        $this->dbal->fetchOne("DELETE FROM t_users WHERE id = :id", [
+        $this->dbal->executeQuery("DELETE FROM t_users WHERE id = :id", [
             'id' => $user->getId()
         ]);
     }

@@ -37,11 +37,13 @@ final class UserController extends AbstractController
      */
     public function postUserAction(Request $request): JsonResponse
     {
-        $username = $request->request->get('username', 'default');
-        $firstName = $request->request->get('firstName', 'default');
-        $lastName = $request->request->get('lastName', 'default');
-        $email = $request->request->get('email', 'default');
-        $phone = $request->request->get('phone', 'default');
+        $requestData = json_decode($request->getContent(), true);
+
+        $username = $requestData['username'] ?? '';
+        $firstName = $requestData['firstName'] ?? '';
+        $lastName = $requestData['lastName'] ?? '';
+        $email = $requestData['email'] ?? '';
+        $phone = $requestData['phone'] ?? '';
 
         try {
             $user = new User(
@@ -53,7 +55,7 @@ final class UserController extends AbstractController
                 $phone
             );
 
-            $this->userRepository->update($user);
+            $this->userRepository->insert($user);
 
             return $this->json([
                 'id' => $user->getId()
@@ -79,7 +81,7 @@ final class UserController extends AbstractController
         if ($user === null) {
             return $this->json([
                 'code' => 0,
-                'message' => 'Not found'
+                'message' => 'User not found'
             ]);
         }
 
@@ -106,20 +108,31 @@ final class UserController extends AbstractController
         if ($user === null) {
             return $this->json([
                 'code' => 404,
-                'message' => 'Not found'
+                'message' => 'User not found'
             ]);
         }
 
-        $firstName = $request->request->get('firstName', 'default');
-        $lastName = $request->request->get('lastName', 'default');
-        $email = $request->request->get('email', 'default');
-        $phone = $request->request->get('phone', 'default');
+        $requestData = json_decode($request->getContent(), true);
+        $firstName = $requestData['firstName'] ?? '';
+        $lastName = $requestData['lastName'] ?? '';
+        $email = $requestData['email'] ?? '';
+        $phone = $requestData['phone'] ?? '';
 
-        $user
-            ->setFirstName($firstName)
-            ->setLastName($lastName)
-            ->setEmail($email)
-            ->setPhone($phone);
+        if (!empty($firstName)) {
+            $user->setFirstName($firstName);
+        }
+
+        if (!empty($lastName)) {
+            $user->setLastName($lastName);
+        }
+
+        if (!empty($email)) {
+            $user->setEmail($email);
+        }
+
+        if (!empty($phone)) {
+            $user->setPhone($phone);
+        }
 
         $this->userRepository->update($user);
 
@@ -141,12 +154,15 @@ final class UserController extends AbstractController
         if ($user === null) {
             return $this->json([
                 'code' => 0,
-                'message' => 'Not found'
+                'message' => 'User not found'
             ]);
         }
 
         $this->userRepository->delete($user);
-        return $this->json([]);
+        return $this->json([
+            'code' => 0,
+            'message' => 'Success!'
+        ]);
     }
 
     /**

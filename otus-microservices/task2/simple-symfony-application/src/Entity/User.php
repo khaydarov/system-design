@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use InvalidArgumentException;
+
 class User
 {
     /**
@@ -45,10 +47,30 @@ class User
         string $phone
     ) {
         $this->id = $id;
+
+        if (empty($username)) {
+            throw new InvalidArgumentException("Username is empty");
+        }
         $this->username = $username;
+
+        if (empty($firstName)) {
+            throw new InvalidArgumentException("First name is empty");
+        }
         $this->firstName = $firstName;
+
+        if (empty($lastName)) {
+            throw new InvalidArgumentException("Last name is empty");
+        }
         $this->lastName = $lastName;
+
+        if (empty($email)) {
+            throw new InvalidArgumentException("Email is empty");
+        }
         $this->email = $email;
+
+        if (empty($phone)) {
+            throw new InvalidArgumentException("Phone is empty");
+        }
         $this->phone = $phone;
     }
 
