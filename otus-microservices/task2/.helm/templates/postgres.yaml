@@ -4,7 +4,7 @@ metadata:
   name: {{ .Chart.Name }}-postgres-statefulset
 spec:
   serviceName: postgres
-  replicas: {{ .Values.postgres.replicaCount }}
+  replicas: {{ .Values.external.postgres.replicaCount }}
   selector:
     matchLabels:
       app: {{ .Chart.Name }}-postgres
@@ -15,17 +15,17 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}-postgres
-          image: {{ .Values.postgres.image.repository }}:{{ .Values.postgres.image.tag }}
+          image: {{ .Values.external.postgres.image.repository }}:{{ .Values.external.postgres.image.tag }}
           ports:
-            - containerPort: {{ .Values.postgres.access.port }}
+            - containerPort: {{ .Values.external.postgres.access.port }}
               name: postgredb
           env:
             - name: POSTGRES_DB
-              value: {{ .Values.postgres.access.db }}
+              value: {{ .Values.external.postgres.access.db }}
             - name: POSTGRES_USER
-              value: {{ .Values.postgres.access.user }}
+              value: {{ .Values.external.postgres.access.user }}
             - name: POSTGRES_PASSWORD
-              value: {{ .Values.postgres.access.pass }}
+              value: {{ .Values.external.postgres.access.pass }}
           volumeMounts:
             - name: postgredb
               mountPath: /var/lib/postgresql/data
@@ -49,6 +49,6 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: {{ .Values.postgres.access.port }}
+    - port: {{ .Values.external.postgres.access.port }}
   selector:
     app: {{ .Chart.Name }}-postgres

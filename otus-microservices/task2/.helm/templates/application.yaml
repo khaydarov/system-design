@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: {{ .Values.deployment.pod.repository}}:{{ .Values.deployment.pod.tag }}
+          image: {{ .Values.application.deployment.pod.repository}}:{{ .Values.application.deployment.pod.tag }}
           ports:
             - name: web
-              containerPort: {{ .Values.deployment.pod.port }}
+              containerPort: {{ .Values.application.deployment.pod.port }}
           env:
             - name: DATABASE_URL
               valueFrom:
@@ -26,14 +26,27 @@ spec:
                   name: {{ .Chart.Name }}-secret
           livenessProbe:
             httpGet:
-              port: {{ .Values.deployment.pod.port }}
+              port: {{ .Values.application.deployment.pod.port }}
               path: /health
             initialDelaySeconds: 5
             periodSeconds: 2
             timeoutSeconds: 1
           readinessProbe:
             httpGet:
-              port: {{ .Values.deployment.pod.port }}
+              port: {{ .Values.application.deployment.pod.port }}
               path: /health
             initialDelaySeconds: 2
             periodSeconds: 2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}-service
+spec:
+  selector:
+    app: {{ .Chart.Name }}-{{ .Chart.Type }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.application.service.port }}
+      targetPort: {{ .Values.application.deployment.pod.port }}
+  type: {{ .Values.application.service.type }}

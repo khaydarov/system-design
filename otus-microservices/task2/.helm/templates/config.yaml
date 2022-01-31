@@ -5,8 +5,8 @@ metadata:
 type: Opaque
 data:
   databaseUrl: {{ printf "postgresql://%s:%s@%s:%s/%s?charset=utf8"
-      .Values.postgres.access.user
-      .Values.postgres.access.pass
-      .Values.postgres.access.host
-      .Values.postgres.access.port
-      .Values.postgres.access.db | b64enc | quote }}
+      .Values.external.postgres.access.user
+      .Values.external.postgres.access.pass
+      .Values.external.postgres.access.host
+      .Values.external.postgres.access.port
+      .Values.external.postgres.access.db | b64enc | quote }}

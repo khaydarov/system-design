@@ -10,12 +10,12 @@ spec:
       restartPolicy: Never
       initContainers:
         - name: check-db-readiness
-          image: {{ .Values.postgres.image.repository }}:{{ .Values.postgres.image.tag }}
+          image: {{ .Values.external.postgres.image.repository }}:{{ .Values.external.postgres.image.tag }}
           env:
             - name: POSTGRES_HOST
-              value: {{ .Values.postgres.access.host }}
+              value: {{ .Values.external.postgres.access.host }}
             - name: POSTGRES_PORT
-              value: {{ .Values.postgres.access.port | quote }}
+              value: {{ .Values.external.postgres.access.port | quote }}
           command:
             - sh
             - "-c"
@@ -30,7 +30,7 @@ spec:
                 secretKeyRef:
                   key: databaseUrl
                   name: {{ .Chart.Name }}-secret
-          image: {{ .Values.deployment.pod.repository}}:{{ .Values.deployment.pod.tag }}
+          image: {{ .Values.application.deployment.pod.repository}}:{{ .Values.application.deployment.pod.tag }}
           command:
           - /bin/bash
           args:
