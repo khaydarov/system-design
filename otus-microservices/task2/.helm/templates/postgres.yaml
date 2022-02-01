@@ -35,7 +35,7 @@ spec:
         name: postgredb
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        storageClassName: manual
+        storageClassName: hostpath
         resources:
           requests:
             storage: 1Gi
