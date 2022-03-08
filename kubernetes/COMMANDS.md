@@ -42,3 +42,8 @@ Scale PODS inside DEPLOYMENT
 ```shell
 kubectl scale --replicas=4 deployment/DEPLOYMENTNAME
 ```
+
+Proxy forward
+```shell
+kubectl port-forward service/prom-grafana 9000:80 -n monitoring
+```
