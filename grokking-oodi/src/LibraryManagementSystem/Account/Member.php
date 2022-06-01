@@ -54,7 +54,7 @@ final class Member extends Account
         }
 
         $bookReservation->updateReservationStatus($bookItem, $this);
-        $bookItem->checkOut($this, $bookLending);
+        $bookLending->lendBook($bookItem, $this);
         $this->totalBooksCheckedOut++;
     }
 

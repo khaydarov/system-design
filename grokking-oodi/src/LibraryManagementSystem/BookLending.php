@@ -6,11 +6,14 @@ namespace LibraryManagementSystem;
 
 use LibraryManagementSystem\Account\Member;
 
-interface BookLending
+class BookLending
 {
     /**
      * @param BookItem $bookItem
      * @param Member $member
      */
-    public function lendBook(BookItem $bookItem, Member $member): void;
+    public function lendBook(BookItem $bookItem, Member $member): void
+    {
+        $bookItem->checkOut();
+    }
 }

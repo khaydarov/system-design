@@ -1,0 +1,15 @@
+{
+    "name": "khaydarovm/common",
+    "autoload": {
+        "psr-4": {
+            "Khaydarovm\\Common\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Murod Khaydarov",
+            "email": "murod.haydarov@gmail.com"
+        }
+    ],
+    "require": {}
+}
