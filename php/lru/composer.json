@@ -1,0 +1,27 @@
+{
+    "name": "khaydarovm/lru",
+    "autoload": {
+        "psr-4": {
+            "Khaydarovm\\LRU\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Khaydarovm\\LRU\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Murod Khaydarov",
+            "email": "murod.haydarov@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^10.1",
+        "vimeo/psalm": "^5.9"
+    },
+    "scripts": {
+        "psalm": ["@var", "vendor/bin/psalm --show-info"],
+        "tests": "vendor/bin/phpunit"
+    }
+}
